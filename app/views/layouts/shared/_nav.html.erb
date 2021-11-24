@@ -6,7 +6,9 @@
 							<%= link_to "Athlete's Den", root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}"  %>
 						</ul>
 						<ul class="navbar-nav mb-2 mb-lg-0">
-							 <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
+							<%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
+							<%= link_to "Sign in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
+							<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
 						</ul>
 					</div>
         </div>
