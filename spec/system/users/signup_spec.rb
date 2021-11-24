@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "User registration form" do
+RSpec.describe "User registration" do
 	scenario "with valid credentials" do
 			visit root_path
 			# sleep(5)
@@ -18,7 +18,8 @@ RSpec.describe "User registration form" do
 
 				click_button "Sign up"
 			end
-			# expect(page).to have_content("You have signed up successfully")
+
+			expect(page).to have_content("You have signed up successfully")
 			# expect(page).to have_content("You have signed up successfully")
 			# expect(page).to have_content("Welcome, #{email}!")
 
