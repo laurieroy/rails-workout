@@ -16,6 +16,19 @@
       <%= render "layouts/shared/nav" %>
     </header>
     <main>
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |key, msg| %>
+            <div class="alert alert-<%= key == "alert" ? "warning" : "success" %>
+              alert-dismissable fade show" role="alert">
+            <%= msg %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+          <% end %>
+        </div>
+      </div>
       <%= yield %>
     </main>
  

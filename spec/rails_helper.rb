@@ -5,9 +5,6 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'capybara'
-Capybara.javascript_driver = :selenium_chrome_headless
-# Capybara.javascript_driver = :selenium_chrome
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -73,3 +70,6 @@ RSpec.configure do |config|
     /lib\/rspec\/(core|expectations|matchers|mocks)/ 
   ]
 end
+
+Capybara.javascript_driver = :selenium_chrome_headless
+# Capybara.javascript_driver = :selenium_chrome
