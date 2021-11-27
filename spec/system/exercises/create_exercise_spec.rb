@@ -2,13 +2,14 @@ require "rails_helper"
 
 RSpec.describe "Creating exercise" do
 	before do
+		driven_by(:rack_test)
 		@user = create :user
 		login_as(@user)
 	end
 
 	scenario "with valid inputs" do
 		visit "/"
-
+# byebug
 		click_link "My Workouts"
 		click_link "New Workout"
 
@@ -23,7 +24,7 @@ RSpec.describe "Creating exercise" do
 
 		exercise = Exercise.last
 
-		expect(have_current_path).to have_current_path(user_exercise_path(@user, exercise))
+		expect(current_path).to have_current_path(user_exercise_path(@user, exercise))
 		expect(exercise.user_id).to eq(@user.id)
 	end
 

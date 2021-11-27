@@ -1,0 +1,20 @@
+<div class="col-lg-7 col-md-9 col-sm-8">
+<div><h2 class="show-header">Showing <%= "#{@exercise.user.full_name}'s Workout Details" %></h2></div>
+</div>
+<div class="col-lg-7 col-md-9 col-sm-8 member">
+	<td>Duration(minutes):</td>
+	<td><%= @exercise.duration_in_min %></td>
+
+	<td>Workout details:</td>
+	<td><%= truncate(@exercise.workout, length: 50 )%></td>
+
+	<td>Workout Date:</td>
+	<td><%= @exercise.workout_date %></td>
+ </div> 
+ <div class="row">
+	<div class="col-md-12">
+		<div class="col-md-10 col-offset-2 member">
+			<%= link_to "Back", user_exercise_path(current_user), class: "btn btn-default link", id: "back-btn" %>
+		</div>
+	</div>
+</div>
