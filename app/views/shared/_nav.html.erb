@@ -10,8 +10,7 @@
 					<%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
 					<%= link_to "Sign in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
 				<% else %>
-					<%= link_to "My Workouts", user_exercises_path(@user), class: "nav-link #{'active fw-bold' if current_page?(user_exercises_path(@user)) }"  %>
-
+					<%= link_to "My Workouts", user_exercises_path(current_user), class: "nav-link #{'active fw-bold' if current_page?(user_exercises_path(current_user)) }"  %> 
 					<%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
 
 					<div class="navbar-end">

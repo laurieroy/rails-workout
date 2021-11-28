@@ -1,7 +1,6 @@
 class ExercisesController < ApplicationController
 	def index
-		byebug
-		# @exercises = current.user.exercises.all
+		# @exercises = current_user.exercises.all
 	end
 
 	def show
@@ -9,11 +8,12 @@ class ExercisesController < ApplicationController
 	end
 
 	def new
-		@exercise = current_user.exercises.new
+		@exercise = current_user.exercises.build
 	end
 
 	def create
-		@exercise = current_user.exercises.new(exercise_params)
+		# @exercise.user_id = current_user.id
+		@exercise = current_user.exercises.build(exercise_params)
 
 		if @exercise.save
 			flash[:notice] = "Exercise has been created"
@@ -26,7 +26,7 @@ class ExercisesController < ApplicationController
 
 	private
 	def exercise_params
-		params.require(exercise).permit(:duration_in_min, :workout, :workout_date, :user_id)
+		params.require(:exercise).permit(:duration_in_min, :workout, :workout_date, :user_id)
 	end
 	
 end
