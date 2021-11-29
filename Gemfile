@@ -34,8 +34,10 @@ group :development, :test do
   gem 'capybara', '~> 3.36'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.19'
+  gem 'launchy'
   gem 'pry'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers', '~> 5.0'
 end
 
