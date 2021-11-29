@@ -26,4 +26,15 @@ RSpec.describe "Listing exercise" do
 		expect(page).to have_text(@e2.workout)
 		expect(page).to have_text(@e2.workout_date)
 	end
+
+	scenario "shows no exercises if none are created yet" do
+		@new_user = create :user
+		login_as(@new_user)
+
+		visit "/"
+
+		click_link "My Workouts"
+
+		expect(page).to have_text("No Workouts yet")
+	end
 end
