@@ -3,6 +3,10 @@ class Exercise < ApplicationRecord
 
   alias_attribute :workout_details, :workout
 
+  default_scope {where('workout_date > ?', 7.days.ago)
+                 .order(workout_date: :desc)
+  }
+
   validates :duration_in_min, numericality: {only_integer: true, greater_than: 0 }
   validates_presence_of :workout_details
   validates_presence_of :workout_date, comparison: { greater_than: (0) }
