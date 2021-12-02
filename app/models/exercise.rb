@@ -9,6 +9,6 @@ class Exercise < ApplicationRecord
 
   validates :duration_in_min, numericality: {only_integer: true, greater_than: 0 }
   validates_presence_of :workout_details
-  validates_presence_of :workout_date, comparison: { greater_than: (0) }
+  validates_presence_of :workout_date 
   # scope: user_id
 end

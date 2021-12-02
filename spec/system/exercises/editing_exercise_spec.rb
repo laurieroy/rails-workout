@@ -10,12 +10,11 @@ RSpec.describe "Editing exercise" do
 	end
 
 	scenario "succeeds with valid inputs" do
-		byebug
 		visit "/"
 
 		click_link "My Workouts"
 
-		path = "/users/#{@edited_user.id}/exercises/#{@xercise_to_edit.user_id}/edit"
+		path = "/users/#{@edited_user.id}/exercises/#{@exercise_to_edit.id}/edit"
 		link = "a[href=\'#{path}\']"
 		click_on link
 		
