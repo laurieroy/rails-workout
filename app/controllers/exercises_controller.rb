@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
 	end
 
 	def show
-		@exercise = current_user.exercises.find params[:id]
+		@exercise = current_user.exercises.find(id: params[:id]) 
 	end
 
 	def new
@@ -21,6 +21,21 @@ class ExercisesController < ApplicationController
 		else
 			flash[:alert] = "Exercise has not been created"
 			render :new
+		end
+	end
+
+	def edit
+		@exercise = current_user.exercises.find params[:id]
+	end
+
+	def update 
+		@exercise = current_user.exercises.find params[:id]
+		if @exercise.update(exercise_params)
+			flash[:notice] = "Exercise has been updated"
+			redirect_to [current_user, @exercise]
+		else
+			flash[:alert] = "Something went wrong, please try again"
+			render :edit
 		end
 	end
 

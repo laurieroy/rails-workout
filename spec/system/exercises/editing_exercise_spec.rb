@@ -16,7 +16,8 @@ RSpec.describe "Editing exercise" do
 
 		path = "/users/#{@edited_user.id}/exercises/#{@exercise_to_edit.id}/edit"
 		link = "a[href=\'#{path}\']"
-		click_on link
+		sleep(5)
+		click_on "Edit"
 		
 
 		fill_in "Duration",	with: 45
