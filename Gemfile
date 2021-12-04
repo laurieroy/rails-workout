@@ -37,6 +37,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers', '~> 5.0'
 end
