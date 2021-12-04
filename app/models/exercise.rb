@@ -3,7 +3,7 @@ class Exercise < ApplicationRecord
 
   alias_attribute :workout_details, :workout
 
-  default_scope {where('workout_date > ?', 7.days.ago)
+  scope :past_week, -> {where('workout_date > ?', 7.days.ago)
                  .order(workout_date: :desc)
   }
 
