@@ -3,13 +3,12 @@ require "rails_helper"
 RSpec.describe "User registration" do
 	scenario "with valid credentials" do
 			visit root_path
-			# sleep(5)
 
 			click_link "Sign up"
 
 			expect(page).to	have_current_path(new_user_registration_path, wait: 3)
 
-			@user = create(:user)
+			@user = build(:user)
 			# byebug
 			within("#new_user") do
 				fill_in :user_email, with: @user.email
