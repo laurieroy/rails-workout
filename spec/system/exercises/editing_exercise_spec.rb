@@ -19,7 +19,6 @@ RSpec.describe "Editing exercise" do
 		sleep(5)
 		click_on "Edit"
 		
-
 		fill_in "Duration",	with: 45
 		click_button "Update Exercise"
 
