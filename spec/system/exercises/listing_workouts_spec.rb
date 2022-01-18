@@ -8,7 +8,7 @@ RSpec.describe "Listing exercise" do
 		@e1 = @user.exercises.create(duration_in_min: 20,
 																 workout: "Recumbent bike",
 																 workout_date: Date.today)
-		@e2 = @user.exercises.create(duration_in_min: 20,
+		@e2 = @user.exercises.create(duration_in_min: 25,
 																 workout: "Yoga",
 																 workout_date: 2.days.ago)
 		@e3 = @user.exercises.create(duration_in_min: 30,
@@ -29,9 +29,9 @@ RSpec.describe "Listing exercise" do
 		expect(page).to have_text(@e2.workout)
 		expect(page).to have_text(@e2.workout_date)
 
-		expect(page).to_not have_text(@e3.duration_in_min)
-		expect(page).to_not have_text(@e3.workout)
-		expect(page).to_not have_text(@e3.workout_date)
+		expect(page).to have_no_text(@e3.duration_in_min)
+		expect(page).to have_no_text(@e3.workout)
+		expect(page).to have_no_text(@e3.workout_date)
 	end
 
 	scenario "shows no exercises if none are created yet" do
@@ -42,6 +42,6 @@ RSpec.describe "Listing exercise" do
 
 		click_link "My Workouts"
 
-		expect(page).to have_text("No Workouts yet")
+		expect(page).to have_text("No Workouts in the past week")
 	end
 end

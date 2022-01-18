@@ -1,9 +1,9 @@
 class ExercisesController < ApplicationController
-	before_action :set_exercise, only: %i[show edit update destroy]
+	before_action :set_exercise, except: %i[index new create]
 
 	def index
-		@exercises = current_user.exercises.all
-		# @exercises = current_user.exercises.past_week
+		# @exercises = current_user.exercises.all
+		@exercises = current_user.exercises.past_week.desc
 	end
 
 	def show
