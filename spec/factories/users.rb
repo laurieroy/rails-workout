@@ -6,3 +6,9 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
   end
 end
+
+def user_with_exercises(exercises_count: 5)
+  FactoryBot.create(:user) do |user|
+    FactoryBot.create_list(:exercise, exercises_count, user: user)
+  end
+end
