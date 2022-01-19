@@ -19,8 +19,8 @@ RSpec.describe "User registration" do
 			end
 
 			expect(page).to have_content("You have signed up successfully")
-			# expect(page).to have_content("You have signed up successfully")
-			# expect(page).to have_content("Welcome, #{email}!")
+			# expect(page).to have_content("Welcome, #{@user.email}!")
+			expect(page).to have_content("Signed in as #{@user.email}")
 
 	end
 end
