@@ -1,28 +1,24 @@
 require "rails_helper"
 
-RSpec.describe "Deleting exercise" do
+RSpec.describe "Deleting exercise", js: true do
 	before do
-		@user = create :user
+		# driven_by(:selenium_chrome_headless)
 
+		@user = user_with_exercises(exercises_count: 1)
+		@exercise_to_delete = @user.exercises.first
+		@exercise_to_delete.user_id = @user.id
 		login_as(@user)
 	end
 
 	scenario "succeeds with valid inputs" do
-		@exercise_to_delete = create(:exercise)
-		@exercise_to_delete.user_id = @user.id
-
 		visit "/"
 
 		click_link "My Workouts", wait: 5
 
-		# expect(page).to have_no.content("")
-		expect(page).to have_text("No Workouts yet")
+		accept_alert do
+			find_link("Destroy").click
+		end
 
-# 		path = "/users/#{@user.id}/exercises/#{@exercise_to_delete.id}"
-# 		link = "//a[contains(@href,\'#{path}\') and .//text()='Destroy']"
-# # byebug
-# 		find(:xpath, link)
-
-		expect(page).to have.text("Exercise has been deleted")
+		expect(page).to have_text("Workout has been deleted")
 	end
 end

@@ -41,7 +41,7 @@ class ExercisesController < ApplicationController
 
 	def destroy
 		@exercise.destroy
-		flash[:notice] = "Excercise has been deleted"
+		flash[:notice] = "Workout has been deleted"
 		redirect_to user_exercises_path(current_user)
 	end
 
