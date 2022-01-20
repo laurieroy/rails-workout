@@ -9,26 +9,16 @@
 		<p class="text-center">password: password    </p>
 	</div>
 
-	<div class="row">
-		<div class="col-md-10">
-			<h2>List of Members</h2>
-		</div>
-	</div>
   <div class="row">
-
-		<% @athletes.each do |a| %> 
-
-			<div class="card" style="width: 18rem;"></div>
-				<div class="card-body">
-					<div class="col-md-10 card member">
-
-						<%= a.full_name %> 
-
-					</div>
-				</div>
+		<div class="card" style="width: 18rem;"></div>
+			<div class="card-body border-top-0">
+				<h3 class="card-title mt-2">List of Members</h3>
 			</div>
-
-		<% end %> 
-
+			<ul class="list-group list-group-flush">
+				<% @athletes.each do |a| %> 
+					<li class="list-group-item"><%= a.full_name %> </li>
+				<% end %> 
+			</ul>
+		</div>
 	</div>
 </div>

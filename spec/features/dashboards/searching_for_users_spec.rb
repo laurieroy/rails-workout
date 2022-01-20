@@ -8,7 +8,7 @@ RSpec.describe "Searching for user" do
 
 	scenario "with name of existing user returns all matches" do
 		visit root_path
-		# byebug
+
 		fill_in "search_name",	with: "Doe" 
 		click_button "Search"
 

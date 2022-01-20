@@ -14,3 +14,4 @@ Login as: test@example.com	for demo purposes
 - Dispaly email if no name has been entered (new exercise)
 - Add container to new exercise
 - Placeholders for forms
+- fix navbar left and right vertical
