@@ -1,6 +1,8 @@
 class DashboardsController < ApplicationController
+
   def index
-    @athletes = User.all
+    # @athletes = User.all
+    @pagy, @athletes = pagy(User.all, items: 5)
   end
 
   def search 
