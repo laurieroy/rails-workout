@@ -5,8 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :exercises, dependent: :destroy
+  has_many :friendships
+  has_many :friends, through: :friendships, class_name: "User"
 
   validates :first_name, :last_name, presence: true
+
+  def follows_or_same?(new_friend)
+    friendships.map(&:friend).include?(new_friend) || self == new_friend
+  end
 
   def full_name
     "#{first_name} #{last_name}"
