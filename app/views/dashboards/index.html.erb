@@ -17,6 +17,13 @@
 			<ul class="list-group list-group-flush">
 				<% @athletes.each do |a| %> 
 					<li class="list-group-item"><%= a.full_name %> </li>
+						<% if current_user %> 
+							<%= link_to "Follow", 
+								friendships_path(friend_id: a.id), 
+								method: :post, 
+								class: "btn btn-success float-end" unless current_user.follows_or_same?(a) 
+							%>
+						<% end %> 
 				<% end %> 
 			</ul>
 		</div>

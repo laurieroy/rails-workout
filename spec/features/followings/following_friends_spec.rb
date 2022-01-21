@@ -6,8 +6,6 @@ RSpec.describe "Following friends" do
 		@u2 = create(:user)
 
 		login_as(@u1)
-	pp @u1
-	pp @u2
 	end
 
 	scenario "if signed in" do
@@ -25,5 +23,6 @@ RSpec.describe "Following friends" do
 			find(link).click
 
 			expect(page).to have_no_link("Follow", href: :href2) 
+			expect(page).to have_text("Following #{@u2.full_name}") 
 	end
 end
