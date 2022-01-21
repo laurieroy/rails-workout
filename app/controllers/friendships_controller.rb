@@ -1,5 +1,9 @@
 class FriendshipsController < ApplicationController
 	before_action :authenticate_user!
+	def show
+		@friend = Friendship.find(params[:id]).friend
+		@exercises = @friend.exercises
+	end
 
 	def create
 		@friend = User.find(params[:friend_id])
@@ -7,7 +11,7 @@ class FriendshipsController < ApplicationController
 		
 		Friendship.create(friendship_params) unless current_user.follows_or_same?(@friend)
 		if @friend.save
-		flash[:notice] = "Following #{@friend.full_name}"
+			flash[:notice] = "Following #{@friend.full_name}"
 		else
 			flash[:notice] = "Unable to follow friend. Try again"
 		end

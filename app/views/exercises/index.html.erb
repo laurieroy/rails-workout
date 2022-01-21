@@ -46,15 +46,15 @@
 
   <% @friends.each do |f| %>
     <div class="col-md-offset-3 col-md-6 friend_name">
-      <%= link_to f.full_name, friendships_path(current_user.current_friendship(f)) %>
+      <%= link_to f.full_name, friendship_path(current_user.current_friendship(f)) %>
     </div>
 
     <div class="col-md-3">
-      <div class="btn-unfollow">
+      <div class="btn-unfollow ">
         <%= link_to "Unfollow", 
-          friendships_path(current_user.current_friendship(f)), 
+          friendship_path(current_user.current_friendship(f)), 
           method: :delete, data: {confirm: "Are you sure?"}, 
-          class: "btn btn-warning link" 
+          class: "btn btn-warning link float-end" 
         %>
       </div>
     </div>

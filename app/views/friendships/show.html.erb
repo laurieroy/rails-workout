@@ -1,0 +1,24 @@
+<div class="col-md-8 col-12">
+	<p id="notice"><%= notice %></p>
+  <% unless @exercises.empty? %>
+     <h1><%= @friend.full_name %>'s Exercises(last 7 days)</h1>
+
+   <%= render "friendships/table" %>
+
+     <br>
+   <% else %>
+     <div class="alert alert-danger message-font text-center"
+     role="alert">
+       No Workouts in the past week
+     </div>
+     <br>
+   <% end %>
+
+</div>
+
+<div class="col-md-4 col">
+  <h1 class="text-center">My Friends</h1>
+
+	<%= link_to "Back", user_exercises_path(current_user), class: "btn btn-default link", id: "back-btn" %>
+
+</div>
