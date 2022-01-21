@@ -10,6 +10,10 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  def current_friendship(friend)
+    friendships.where(friend: friend).first
+  end
+
   def follows_or_same?(new_friend)
     friendships.map(&:friend).include?(new_friend) || self == new_friend
   end

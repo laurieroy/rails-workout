@@ -54,8 +54,8 @@ RSpec.describe "Listing exercise" do
 		
 		click_link "My Workouts"
 
-		expect(page).to have_text("My friends")
-		expect(page).to have_link(@u2.full_name)
+		expect(page).to have_text("My Friends")
+		expect(page).to have_link(@user2.full_name)
 		expect(page).to have_link("Unfollow")
 	end
 end

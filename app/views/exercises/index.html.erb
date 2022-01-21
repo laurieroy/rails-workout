@@ -1,4 +1,4 @@
-<div class="col-md-8 col-xs-12">
+<div class="col-md-8 col-12">
 	<%#= link_to "New Workout", new_user_exercise_path(current_user), class: "btn btn-success link" %>
   <% unless @exercises.empty? %>
      <h1>Listing Exercises(last 7 days)</h1>
@@ -39,4 +39,24 @@
    <% end %>
    <%= link_to 'New Workout', new_user_exercise_path(current_user),
        class: "btn btn-primary link" %>
+</div>
+
+<div class="col-md-4 col">
+  <h1 class="text-center">My Friends</h1>
+
+  <% @friends.each do |f| %>
+    <div class="col-md-offset-3 col-md-6 friend_name">
+      <%= link_to f.full_name, friendships_path(current_user.current_friendship(f)) %>
+    </div>
+
+    <div class="col-md-3">
+      <div class="btn-unfollow">
+        <%= link_to "Unfollow", 
+          friendships_path(current_user.current_friendship(f)), 
+          method: :delete, data: {confirm: "Are you sure?"}, 
+          class: "btn btn-warning link" 
+        %>
+      </div>
+    </div>
+  <% end %>
 </div>
