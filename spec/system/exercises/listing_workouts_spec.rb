@@ -4,6 +4,8 @@ RSpec.describe "Listing exercise" do
 	before do
 		driven_by(:rack_test)
 		@user = create :user
+		@user2 = create :user
+
 		login_as(@user)
 		@e1 = @user.exercises.create(duration_in_min: 20,
 																 workout: "Recumbent bike",
@@ -14,6 +16,8 @@ RSpec.describe "Listing exercise" do
 		@e3 = @user.exercises.create(duration_in_min: 30,
 																 workout: "Exercise over a week ago",
 																 workout_date: 9.days.ago)
+
+																 @following = Friendship.create(user: @user, friend: @user2)
 	end
 
 	scenario "shows user's workouts for the past 7 days" do
@@ -43,5 +47,15 @@ RSpec.describe "Listing exercise" do
 		click_link "My Workouts"
 
 		expect(page).to have_text("No Workouts in the past week")
+	end
+
+	scenario "show a list of users friends" do
+		visit "/"
+		
+		click_link "My Workouts"
+
+		expect(page).to have_text("My friends")
+		expect(page).to have_link(@u2.full_name)
+		expect(page).to have_link("Unfollow")
 	end
 end
